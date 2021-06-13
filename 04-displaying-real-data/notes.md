@@ -8,7 +8,14 @@ We will have a service, compound of `Internal Store`, `Behavior Subject` and thi
 
 And we will have two entities, the `User` entity and the `Note` entity.
 
-> Real API: https://angular-material-api.azurewebsites.net/users
+Start backend by opening a new terminal and run the following commands:
+
+```bash
+cd ./code/backend-app
+npm start
+```
+
+Nou we can fetch data by `curl localhost:3000/users`
 
 ## Fetching Data
 
