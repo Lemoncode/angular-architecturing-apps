@@ -93,7 +93,7 @@ Update `app.component.html`
 <button mat-button>Click me!</button>
 ```
 
-If we run our application now, we can find out that this not working. We have to import the related module in order to make this working.
+If we run our application now, we can find out that this is not working. We have to import the related module in order to make this working.
 
 Update `app.module.ts`
 
@@ -190,6 +190,17 @@ import { MatIconModule } from '@angular/material/icon';
 })
 export class AppModule { }
 
+```
+
+Update `app.component.html`
+
+```html
+<button mat-button>
+  <mat-icon>face</mat-icon>
+  Click me!
+</button>
+
+<mat-checkbox>Check me!</mat-checkbox>
 ```
 
 ## Creating a Material Master Module
@@ -365,3 +376,6 @@ import { MatTableModule } from '@angular/material/table';
 })
 export class MaterialModule { }
 ```
+
+
+Now if we run our application must be still working `npm start`
