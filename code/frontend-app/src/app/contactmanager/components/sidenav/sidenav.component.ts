@@ -16,7 +16,12 @@ const SMALL_WIDTH_BREAKPOINT = 720;
 export class SidenavComponent implements OnInit {
   isScreenSmall: boolean;
   users: Observable<User[]>;
+  isDarkTheme: boolean = false;
   @ViewChild(MatSidenav) sidenav: MatSidenav;
+
+  toggleTheme(): void {
+    this.isDarkTheme = !this.isDarkTheme;
+  }
 
   constructor(
     private breakPointObserver: BreakpointObserver,
