@@ -185,7 +185,7 @@ export class UserService {
   }
 
   loadAll() {
-    const usersUrl = 'https://angular-material-api.azurewebsites.net/users';
+    const usersUrl = 'http://localhost:3000/users';
 
     return this.http.get<User[]>(usersUrl).subscribe(
       (data) => {
@@ -287,6 +287,8 @@ Lets see this on the browser.
 
 ### SVG Icons
 
+Here are the ofifcial docs of [mat-icons](https://material.angular.io/components/icon/overview)
+
 MatIconRegistry is an injectable service that allows you to associate icon names with SVG URLs and define aliases for CSS font classes. And we usually want to register and load up our icons once, and an excellent place to do so is in the app.component.ts. And in order to prevent cross‑site scripting vulnerabilities, any SVG URLs passed to the MatIconRegistry must be marked as a trusted resource URL by using Angular's DomSanitizer service. 
 
 * Register with MatIconRegistry
@@ -315,7 +317,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 export class ContactmanagerAppComponent implements OnInit {
 
   constructor(iconRegistry: MatIconRegistry, sanitizer: DomSanitizer) { 
-    iconRegistry.addSvgIconSet(sanitizer.bypassSecurityTrustResourceUrl('assets/avatars.svg'))
+    iconRegistry.addSvgIconSet(sanitizer.bypassSecurityTrustResourceUrl('assets/avatars.svg'));
   }
 
   ngOnInit(): void {
@@ -336,7 +338,9 @@ Now we can move `sidenav` and use it. Update `code/angularmaterial/src/app/conta
         <mat-nav-list>
             <mat-list-item *ngFor="let user of users | async">
                 <a matLine href="">
+                    <!-- diff -->
                     <mat-icon svgIcon="{{user.avatar}}"></mat-icon>
+                    <!-- diff -->
                     {{ user.name }}
                 </a>
             </mat-list-item>
@@ -394,6 +398,8 @@ export class AppModule { }
 Now we can test this on the browser
 
 ## Routing to Users
+
+Update `code/frontend-app/src/app/contactmanager/components/sidenav/sidenav.component.html`
 
 ```diff
 <mat-sidenav-container class="app-sidenav-container">
@@ -463,7 +469,7 @@ export class MainContentComponent implements OnInit {
     this.route.params.subscribe(params => {
       const id = params['id'];
       this.user = this.service.userById(id);
-    })
+    });
   }
 
 }
@@ -502,7 +508,7 @@ export class UserService {
   /*diff*/
 
   loadAll() {
-    const usersUrl = 'https://angular-material-api.azurewebsites.net/users';
+    const usersUrl = 'http://localhost:3000/users';
 
     return this.http.get<User[]>(usersUrl).subscribe(
       (data) => {
@@ -542,7 +548,7 @@ Update `code/angularmaterial/src/app/contactmanager/components/main-content/main
 
 ```
 
-If we have a look into the browser, we will find out that we have a couple the problems. First we haven't selected any user and the spinner appears, even when we don't have try to select a user from the list.
+If we have a look into the browser, we will find out that we have a couple of problems. First we haven't selected any user and the spinner appears, even when we don't have try to select a user from the list.
 
 If we select a user works, but if we refresh the page we have the same problem.
 
@@ -810,6 +816,7 @@ Update `code/angularmaterial/src/app/contactmanager/components/main-content/main
         <mat-card-subtitle>Birthday {{ user.birthDate | date: 'd LLLL' }}</mat-card-subtitle>
     </mat-card-header>
     <mat-card-content>
+        <!-- diff -->
         <mat-tab-group>
             <mat-tab label="Bio">
                 <p>{{user.bio}}</p>
@@ -818,6 +825,7 @@ Update `code/angularmaterial/src/app/contactmanager/components/main-content/main
                 Notes
             </mat-tab>
         </mat-tab-group>
+        <!-- diff -->
     </mat-card-content>
 </mat-card>
 

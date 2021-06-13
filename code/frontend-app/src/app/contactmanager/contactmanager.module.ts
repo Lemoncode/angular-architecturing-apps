@@ -8,24 +8,36 @@ import { RouterModule, Routes } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { MaterialModule } from '../shared/material.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { UserService } from './services/user.service';
+import { HttpClientModule } from '@angular/common/http';
 
 const routes: Routes = [
   {
     path: '',
     component: ContactmanagerAppComponent,
-    children: [{ path: '', component: MainContentComponent }],
+    children: [
+      { path: ':id', component: MainContentComponent },
+      { path: '', component: MainContentComponent },
+    ],
   },
   { path: '**', redirectTo: '' },
 ];
 
 @NgModule({
-  declarations: [ContactmanagerAppComponent, ToolbarComponent, MainContentComponent, SidenavComponent],
+  declarations: [
+    ContactmanagerAppComponent,
+    ToolbarComponent,
+    MainContentComponent,
+    SidenavComponent,
+  ],
   imports: [
     CommonModule,
+    HttpClientModule,
     FormsModule,
     MaterialModule,
     FlexLayoutModule,
     RouterModule.forChild(routes),
-  ]
+  ],
+  providers: [UserService],
 })
-export class ContactmanagerModule { }
+export class ContactmanagerModule {}
