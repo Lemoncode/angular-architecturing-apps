@@ -106,7 +106,7 @@ To test we can update `code/angularmaterial/src/app/contactmanager/components/si
 
 Lets visit on browser `npm start` 
 
-## Togging Themes
+## Toggling Themes
 
 Update `code/angularmaterial/src/app/contactmanager/components/toolbar/toolbar.component.html`
 
