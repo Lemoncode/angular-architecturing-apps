@@ -65,15 +65,9 @@ ng g c book-collection --skip-tests
 Update `library/src/app/book-collection/book-collection.component.html`
 
 ```html
-<div 
-  class="book-item"
-  *ngFor="let book of books"
->
-  <p>{{book.volumeInfo.title}}</p><span> by {{book.volumeInfo.authors}}</span>
-  <button
-    (click)="remove.emit(book.id)"
-    data-test="remove-button"
-  >Remove from Collection</button>
+<div class="book-item" *ngFor="let book of books">
+    <p>{{book?.volumeInfo?.title}}</p><span> by {{book?.volumeInfo?.authors}}</span>
+    <button (click)="remove.emit(book?.id)" data-test="remove-button">Remove from Collection</button>
 </div>
 ```
 

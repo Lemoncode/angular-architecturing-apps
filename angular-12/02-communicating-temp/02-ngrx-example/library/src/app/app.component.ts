@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { select, Store } from '@ngrx/store';
-import { Book } from './book-list/books.model';
+import { Store } from '@ngrx/store';
 import { BooksService } from './book-list/books.service';
 import { AppState } from './state/app.state';
 import { addBook, removeBook, retrievedBookList } from './state/books.actions';
