@@ -262,7 +262,7 @@ export class LoginComponent implements OnInit {
 ## Building a Presentational Component
 
 ```bash
-$ ng g c components/login-form --project=auth
+ng g c components/login-form --project=auth
 ```
 
 Edit `./demo-workspace/libs/auth/src/lib/components/login-form/login-form.component.ts`
@@ -287,7 +287,7 @@ Edit `./demo-workspace/libs/auth/src/lib/components/login-form/login-form.compon
 <button (click)="login.emit()">login</button>
 ```
 
-Edit to use the presentational component
+Edit the container `./demo-workspace/libs/auth/src/lib/containers/login/login.component.html` to use the presentational component
 
 ```diff
 -<p>login works!</p>
@@ -332,7 +332,7 @@ export class LoginComponent implements OnInit {
 And serve the application
 
 ```bash
-$ $(npm bin)/nx run customer-portal:serve
+$(npm bin)/nx run customer-portal:serve
 ```
 
 Navigate to `http://localhost:4200/auth` and click on `login` opening the console shows that our user is loaded.

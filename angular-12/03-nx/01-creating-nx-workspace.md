@@ -7,14 +7,12 @@ So where do you kick off? Where do you get the information? The best place is go
 You need the `Angular CLI` on your machine. 
 You need to go get the `nrwl/schematics`.
 
-
-
 ## Creating an Nx Workspace
 
 ```bash
-$ mkdir code && cd code
-$ npm i nx npx -D
-$ npm init -y
+mkdir code && cd code
+npm i nx npx -D
+npm init -y
 $(npm bin)/nx --help
 
 >  NX  The current directory isn't part of an Nx workspace.
@@ -29,8 +27,7 @@ $(npm bin)/nx --help
 Let's follow the previous intsractions and create a `workspace`
 
 ```bash
-$ npm i npx -D
-$ $(npm bin)/npx create-nx-workspace@latest demo-workspace
+npx create-nx-workspace@latest demo-workspace
 npx: installed 240 in 21.761s
 ? What to create in the new workspace angular           [a workspace with a single Angular application]
 ? Application name                    demo
@@ -74,33 +71,18 @@ If we have a look into `code/demo-workspace/package.json` we will see different 
 {
     // ......
     "scripts": {
-        "ng": "nx",
-        "postinstall": "node ./decorate-angular-cli.js && ngcc --properties es2015 browser module main --first-only --create-ivy-entry-points",
-        "nx": "nx",
-        "start": "ng serve",
-        "build": "ng build",
-        "test": "ng test",
-        "lint": "nx workspace-lint && ng lint",
-        "e2e": "ng e2e",
-        "affected:apps": "nx affected:apps",
-        "affected:libs": "nx affected:libs",
-        "affected:build": "nx affected:build",
-        "affected:e2e": "nx affected:e2e",
-        "affected:test": "nx affected:test",
-        "affected:lint": "nx affected:lint",
-        "affected:dep-graph": "nx affected:dep-graph",
-        "affected": "nx affected",
-        "format": "nx format:write",
-        "format:write": "nx format:write",
-        "format:check": "nx format:check",
-        "update": "nx migrate latest",
-        "workspace-generator": "nx workspace-generator",
-        "dep-graph": "nx dep-graph",
-        "help": "nx help"
+      "ng": "nx",
+      "postinstall": "node ./decorate-angular-cli.js && ngcc --properties es2015 browser module main",
+      "start": "nx serve",
+      "build": "nx build",
+      "test": "nx test"
     },
     // ......
 }
 ```
+
+
+> NOTE: Seems that the command is not working on current version
 
 If we run `npm run help`, we get a sinopsys about what all the related commands are doing:
 

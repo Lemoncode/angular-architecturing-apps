@@ -37,7 +37,7 @@ Options:
 ```
 
 ```bash
-$ ng g lib auth --routing --lazy --parentModule=apps/customer-portal/src/app/app.module.ts
+ng g lib auth --routing --lazy --parentModule=apps/customer-portal/src/app/app.module.ts
 Your global Angular CLI version (11.1.2) is greater than your local version (11.0.7). The local Angular CLI version is used.
 
 To disable this warning use "ng config -g cli.warnings.versionMismatch false".
@@ -134,33 +134,19 @@ If we have a look into `./demo-workspace/angular.json`, we will notice that has 
 
 ```json
 {
-    // ...............
-    "auth": {
-      "projectType": "library",
-      "root": "libs/auth",
-      "sourceRoot": "libs/auth/src",
-      "prefix": "demo-workspace",
-      "architect": {
-        "lint": {
-          "builder": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": [
-              "libs/auth/src/**/*.ts",
-              "libs/auth/src/**/*.html"
-            ]
-          }
-        },
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/auth"],
-          "options": {
-            "jestConfig": "libs/auth/jest.config.js",
-            "passWithNoTests": true
-          }
-        }
-      }
-    }
+  "$schema": "./node_modules/nx/schemas/workspace-schema.json",
+  "version": 2,
+  "projects": {
+    "admin-portal": "apps/admin-portal",
+    "admin-portal-e2e": "apps/admin-portal-e2e",
+    "auth": "libs/auth",
+    "customer-portal": "apps/customer-portal",
+    "customer-portal-e2e": "apps/customer-portal-e2e",
+    "demo": "apps/demo",
+    "demo-e2e": "apps/demo-e2e"
+  }
 }
+
 ```
 
 Updates `./demo-workspace/tsconfig.base.json`
@@ -194,7 +180,7 @@ Updates `./demo-workspace/tsconfig.base.json`
 Let's run 
 
 ```bash
-$ $(npm bin)/nx run customer-portal:serve
+$(npm bin)/nx run customer-portal:serve
 
 
 > nx run customer-portal:serve 
@@ -224,13 +210,13 @@ Notice that now we have `demo-workspace-auth` a tiny chunk that is lazy loaded.
 Let's say that we want our libs to be segreated on different namespaces (directories), we can achive this by running
 
 ```bash
-$ ng g lib auth --routing --lazy --parentModule=apps/customer-portal/src/app/app.module.ts --directory=shared
+ng g lib auth --routing --lazy --parentModule=apps/customer-portal/src/app/app.module.ts --directory=shared
 ```
 
 ## Adding NgRx to the lib
 
 ```bash
-$ ng g ngrx auth --module=libs/auth/src/lib/auth.module.ts
+ng g ngrx auth --module=libs/auth/src/lib/auth.module.ts
 Your global Angular CLI version (11.1.2) is greater than your local version (11.0.7). The local Angular CLI version is used.
 
 To disable this warning use "ng config -g cli.warnings.versionMismatch false".
@@ -280,13 +266,13 @@ export class AuthModule {}
 If we run our app now we must see some default state
 
 ```bash
-$ $(npm bin)/nx run customer-portal:serve
+$(npm bin)/nx run customer-portal:serve
 ```
 
 ## Building a Container Component
 
 ```bash
-$ ng g c containers/login --project=auth
+ng g c containers/login --project=auth
 Your global Angular CLI version (11.1.2) is greater than your local version (11.0.7). The local Angular CLI version is used.
 
 To disable this warning use "ng config -g cli.warnings.versionMismatch false".
@@ -325,7 +311,7 @@ export class AuthModule {}
 We can run the application again
 
 ```bash
-$ $(npm bin)/nx run customer-portal:serve
+$(npm bin)/nx run customer-portal:serve
 ```
 
 And visit `http://localhost:4200/auth` we can see on bottom `login works!`
@@ -333,7 +319,7 @@ And visit `http://localhost:4200/auth` we can see on bottom `login works!`
 ## Creating a Service
 
 ```bash
-$ ng g s --help
+ng g s --help
 Your global Angular CLI version (11.1.2) is greater than your local version (11.0.7). The local Angular CLI version is used.
 
 To disable this warning use "ng config -g cli.warnings.versionMismatch false".
@@ -355,7 +341,7 @@ Options:
 We are going to create the `auth service` on `auth project`
 
 ```bash
-$ ng g s services/auth --project=auth
+ng g s services/auth --project=auth
 Your global Angular CLI version (11.1.2) is greater than your local version (11.0.7). The local Angular CLI version is used.
 
 To disable this warning use "ng config -g cli.warnings.versionMismatch false".
