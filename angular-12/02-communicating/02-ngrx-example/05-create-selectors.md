@@ -5,24 +5,24 @@ Create the book list and collection selectors to ensure we get the correct infor
 Create `library/src/app/state/books.selectors.ts`
 
 ```ts
-import { createSelector, createFeatureSelector } from '@ngrx/store';
-import { AppState } from './app.state';
-import { Book } from '../book-list/books.model';
+import { createSelector, createFeatureSelector } from "@ngrx/store";
+import { AppState } from "./app.state";
+import { Book } from "../book-list/books.model";
 
 export const selectBooks = createSelector(
-  (state: AppState) => state.books,
+  (state: AppState) => state.books as Book[],
   (books: Array<Book>) => books
 );
 
 export const selectCollectionState = createFeatureSelector<
-  AppState,
-  ReadonlyArray<string>
->('collection');
+  ReadonlyArray<string> | any
+>("collection");
 
-export const sleectBookCollection = createSelector(
-    selectBooks,
-    selectCollectionState,
-    (books: Array<Book>, collection: Array<string>) => {
-        return collection.map((id) => books.find((book) => book.id === id))
-    });
+export const selectBookCollection = createSelector(
+  selectBooks,
+  selectCollectionState,
+  (books: Array<Book>, collection: Array<string>) => {
+    return collection.map((id) => books.find((book) => book.id === id));
+  }
+);
 ```

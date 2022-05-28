@@ -5,7 +5,7 @@ Create a state management folder *state* (`src/app/state`), and within the new f
 Create `book-list` component
 
 ```bash
-$ ng g c book-list --skip-tests
+ng g c book-list --skip-tests
 ```
 
 Add the following file `library/src/app/book-list/books.model.ts`
@@ -25,20 +25,21 @@ Create `library/src/app/state/books.actions.ts`
 
 ```ts
 import { createAction, props } from '@ngrx/store';
+import { Book } from '../book-list/books.model';
 
 export const addBook = createAction(
     '[Book List] Add book',
-    props<{ bookId }>()
+    props<{ bookId: string }>()
 );
 
 export const removeBook = createAction(
     '[Book Collection] Remove book',
-    props<{ bookId }>()
+    props<{ bookId: string }>()
 );
 
 export const retrievedBookList = createAction(
     '[Book List/API] Retrieve Books Success',
-    props<{ Book }>()
+    props<{ books: Book[] }>()
 );
 
 ```

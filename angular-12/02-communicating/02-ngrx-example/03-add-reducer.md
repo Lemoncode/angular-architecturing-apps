@@ -12,7 +12,7 @@ export const initialState: ReadonlyArray<Book> = [];
 
 export const booksReducer = createReducer(
     initialState,
-    on(retrievedBookList, (state, { Book }) => [...Book])
+    on(retrievedBookList, (state, { books }) => [...books])
 );
 ```
 
@@ -25,7 +25,7 @@ Define the same reducer to handle the remove action by filtering the collection 
 Create `library/src/app/state/collection.reducer.ts`
 
 ```ts
-import { createReducer, on, Action } from '@ngrx/store';
+import { createReducer, on } from '@ngrx/store';
 import { addBook, removeBook } from './books.actions';
 
 export const initialState: ReadonlyArray<string> = [];
