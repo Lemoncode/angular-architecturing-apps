@@ -226,8 +226,10 @@ export class DemoRoutingModule { }
 
 Lets start by installing [@angular/flex-layout](https://github.com/angular/flex-layout)
 
+> This package is deprecated. Abgular bets on CSS browser implementation.  
+
 ```bash
-npm i -s @angular/flex-layout@11.0.0-beta.33
+npm i @angular/flex-layout@13.0.0-beta.38
 ```
 
 Update `code/angularmaterial/src/app/demo/demo.module.ts`
@@ -382,7 +384,7 @@ We want a new component in this module that will be the root component,
 ng g c contactmanager/contactmanager-app --flat --skip-tests --inline-style --inline-template
 ```
 
-This component will act as a host for other components, we want a tookbar, a side bar and main area, lets create all of them.
+This component will act as a host for other components, we want a toolbar, a side bar and main area, lets create all of them.
 
 ```bash
 ng g c contactmanager/components/toolbar --skip-tests
