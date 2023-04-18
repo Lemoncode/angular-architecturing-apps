@@ -7,7 +7,7 @@ For uninstall `@angular/cli`
 ```bash
 npm uninstall -g @angular/cli
 npm uninstall -g @angular-cli
-npm install -g @angular/cli@12.0.1
+npm install -g @angular/cli@13
 ng version
 ```
 
@@ -28,7 +28,7 @@ We can install Angular Material by running `ng add @angular/material`, this will
 Lets install the version that aligns with our Angular CLI
 
 ```bash
-ng add @angular/material@11.2.12
+ng add @angular/material@13
 ```
 
 * Select

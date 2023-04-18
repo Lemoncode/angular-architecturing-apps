@@ -283,7 +283,7 @@ Update `code/angularmaterial/src/app/contactmanager/components/sidenav/sidenav.c
 
 Lets see this on the browser.
 
-## Loading SSVG Avatars
+## Loading SVG Avatars
 
 ### SVG Icons
 

@@ -662,7 +662,6 @@ Now we can test it on the browser.
 
 ## Snackbar Notifications
 
-
 Update `code/angularmaterial/src/app/contactmanager/components/toolbar/toolbar.component.ts`
 
 ```ts
